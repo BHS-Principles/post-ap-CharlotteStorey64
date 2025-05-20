@@ -4,7 +4,7 @@ var list = [
     "maybe Emily"
 ];
 
-var imgs = ["octopus.png","wolf.jpg", "america-4.png", "weevil.png"];
+var imgs = ["octopus.png","wolf.jpg", "america-4.png", "weevil.png","trainbaby.png"];
 
 var btn = document.getElementById("btn");
 
