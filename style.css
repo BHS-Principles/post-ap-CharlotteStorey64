@@ -1,0 +1,27 @@
+body{background-color: red; color:blue; font-family:Arial;}
+
+body *{
+    display: inline-block;
+    position: relative;
+}
+
+button#btn{background-color:orange; 
+    color:blueviolet; 
+    border: 5px outset hotpink; 
+    font-size:larger; 
+    font-weight:900;
+}
+
+.card{
+    width: 10rem;
+    height: 15rem;
+    background-color: purple;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/5/55/Atlasnye_playing_cards_deck.svg);
+    background-size: 1300% 400%;
+    background-position: 200% 0;
+}
+
+.img{
+    border: 10px double #55ff00; 
+    border-radius:50%;
+}

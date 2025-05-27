@@ -32,7 +32,7 @@ for(var j = 0; j < imgs.length; j++){
 for(var count = 0; count < frames.length; count++){
     var d = frames[count];
     var copy = HTML.cloneNode(true);
-    copy.addEventListener("click", (e)=>{doThing(e,d)});
+    copy.addEventListener("click", (e)=>{ doThing(e,d)});
 
     document.body.append(copy);
 }
