@@ -1,21 +1,41 @@
 //making buttons and cloning them plus some other stuff
-var imgs = ["octopus.png","wolf.jpg", "america-4.png", "weevil.png","trainbaby.png"];
-
-var frames = [
-{cat:"cat"},
-{anotherCat:"mewo"}
+var FRAMES = [
+    {},
+    {},
+    {}
 
 ];
 
-var btn = document.getElementById("btn");
-var HTML = document.getElementById("myFrame");
+var HTML = document.querySelector(".card");
 
-var doThing = function(event, data){
+var doSomething = function(event, data){
     console.log(event);
     console.log(data);
-    alert("Ouch! Don't click so hard :(");
+    alert("FRame me up before you go go");
+};
+
+for(var count = 0; count < 52; count++ )
+{
+    var d = FRAMES[count];
+    var copy = HTML.cloneNode(true);
+    copy.style.backgroundPositionX = count%13 + "00%";
+    copy.style.backgroundPositionY = -count%4 + "00%";
+    /*
+    d.suit = Math.floor(count/13);
+    d.number = count % 13;
+    */
+
+    copy.addEventListener("click", (e)=>{ doSomething(e,d) } );
+
+    document.body.append(copy);
 
 }
+alert("?????");
+
+var imgs = ["octopus.png","wolf.jpg", "america-4.png", "weevil.png","trainbaby.png"];
+
+
+var btn = document.getElementById("btn");
 
 for(var j = 0; j < imgs.length; j++){
     var pic = document.getElementById(imgs[j]);
@@ -27,12 +47,4 @@ for(var j = 0; j < imgs.length; j++){
     newBtn.addEventListener("click", doThing);
     
 
-}
-
-for(var count = 0; count < frames.length; count++){
-    var d = frames[count];
-    var copy = HTML.cloneNode(true);
-    copy.addEventListener("click", (e)=>{ doThing(e,d)});
-
-    document.body.append(copy);
 }

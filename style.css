@@ -1,11 +1,16 @@
-body{background-color: red; color:blue; font-family:Arial;}
+body{
+    background-color: red; 
+    color:blue; 
+    font-family:Arial;
+}
 
 body *{
     display: inline-block;
     position: relative;
 }
 
-button#btn{background-color:orange; 
+button#btn{
+    background-color:orange; 
     color:blueviolet; 
     border: 5px outset hotpink; 
     font-size:larger; 
@@ -13,12 +18,13 @@ button#btn{background-color:orange;
 }
 
 .card{
+    background-color:aqua;
     width: 10rem;
     height: 15rem;
     background-color: purple;
     background-image: url(https://upload.wikimedia.org/wikipedia/commons/5/55/Atlasnye_playing_cards_deck.svg);
     background-size: 1300% 400%;
-    background-position: 200% 0;
+    background-position: 600% 100%;
 }
 
 .img{
