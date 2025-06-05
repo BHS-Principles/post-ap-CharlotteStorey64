@@ -1,50 +1,71 @@
-//making buttons and cloning them plus some other stuff
-var FRAMES = [
-    {},
-    {},
-    {}
+//alert(":3!!!");
 
-];
+var TEMP = document.getElementById("temp");
+var CARD = TEMP.querySelector(".card");
+var TARGET = document.getElementById("target");
 
-var HTML = document.querySelector(".card");
-
-var doSomething = function(event, data){
-    console.log(event);
-    console.log(data);
-    alert("FRame me up before you go go");
-};
-
-for(var count = 0; count < 52; count++ )
-{
-    var d = FRAMES[count];
-    var copy = HTML.cloneNode(true);
-    copy.style.backgroundPositionX = count%13 + "00%";
-    copy.style.backgroundPositionY = -count%4 + "00%";
-    /*
-    d.suit = Math.floor(count/13);
-    d.number = count % 13;
-    */
-
-    copy.addEventListener("click", (e)=>{ doSomething(e,d) } );
-
-    document.body.append(copy);
+/*
+for(var i= 0; i < 52; i++){
+    var cardCopy = CARD.cloneNode(true);
+    cardCopy.innerHTML = "silver:" + i;
+    cardCopy.style.backgroundPositionX = -(i) + "00%";
+    cardCopy.style.backgroundPositionY = Math.floor(i/13) + "00%";
+    TARGET.append(cardCopy);
 
 }
-alert("?????");
+*/
 
-var imgs = ["octopus.png","wolf.jpg", "america-4.png", "weevil.png","trainbaby.png"];
+class Card{
+    // WHAT IT IS
+    constructor(num){
+        this.id = num;
+        this.suit = Math.floor(num / 13);
+        this.value = num % 13;
+        this.pic = "mhttps://upload.wikimedia.org/wikipedia/commons/5/55/Atlasnye_playing_cards_deck.svg"
+    }
 
-
-var btn = document.getElementById("btn");
-
-for(var j = 0; j < imgs.length; j++){
-    var pic = document.getElementById(imgs[j]);
-    var newPic = pic.cloneNode(true);
-    document.body.append(newPic);
-
-    var newBtn = btn.cloneNode(true);
-    document.body.append(newBtn);
-    newBtn.addEventListener("click", doThing);
+    // WHAT IT DO
+    draw(){
+        var cardCopy = CARD.cloneNode(true);
+        cardCopy.innerHTML = "silver:" + this.id;
+        cardCopy.style.backgroundPositionX = -(this.id) + "00%";
+        cardCopy.style.backgroundPositionY = Math.floor(this.id/13) + "00%";
+        TARGET.append(cardCopy); 
+    }
     
-
 }
+
+var makeDeck = function(howMany){
+    var deck = [];
+
+    for(var i = 0; i < howMany; i++){
+        var card = new Card(i);
+        deck.push(card);
+    }
+
+    return deck;
+}
+
+
+var shuffledDeck = function(deck){
+    
+    for(var i = 0; i < deck.length; i++){
+        // gotta randomify
+        var rnd = Math.floor(Math.random() * deck.length);
+
+        // cards need to switch position randomly
+        var card1 = deck[i];
+        var card2 = deck[rnd];
+
+        deck[rnd] = card1;
+        deck[i] = card2;
+
+    }
+
+    return deck;
+}
+
+var DECK = makeDeck(52);
+shuffledDeck(DECK);
+console.log(DECK);
+DECK[0].draw();
