@@ -4,16 +4,77 @@ var TEMP = document.getElementById("temp");
 var CARD = TEMP.querySelector(".card");
 var TARGET = document.getElementById("target");
 
-/*
-for(var i= 0; i < 52; i++){
-    var cardCopy = CARD.cloneNode(true);
-    cardCopy.innerHTML = "silver:" + i;
-    cardCopy.style.backgroundPositionX = -(i) + "00%";
-    cardCopy.style.backgroundPositionY = Math.floor(i/13) + "00%";
-    TARGET.append(cardCopy);
+
+class Game{
+    constructor(players, deck){
+        this.players = players;
+        this.deck = deck;
+
+        this.play();
+
+    }
+
+    play(){
+        //step 1: shuffle
+        this.deck.shuffle();
+
+        //step 2: deal
+        this.deck.deal(this.players[0]);
+
+        alert("what's up gamers!");
+    }
+}
+
+class Player{
+    constructor(name){
+        this.name = name;
+        this.hand = [];
+    }
+    draw(){
+
+    }
+}
+
+class Deck{
+
+    constructor(num){
+        this.cardCount = num;
+        this.cards = []
+        this.make();
+        this.shuffle();
+
+    }
+
+    make(){
+    
+        for(var i = 0; i < this.cardCount; i++){
+            var card = new Card(i);
+            this.cards.push(card);
+        }
+
+        return this.cards;
+    }
+
+    shuffle(){
+        for(var i = 0; i < this.cards.length; i++){
+            // gotta randomify
+            var rnd = Math.floor(Math.random() * this.cards.length);
+
+            // cards need to switch position randomly
+            var card1 = this.cards[i];
+            var card2 = this.cards[rnd];
+
+            this.cards[rnd] = card1;
+            this.cards[i] = card2;
+
+        }
+    }
+
+    deal(player){
+        alert("dealt to: " + player.name);
+    }
 
 }
-*/
 
 class Card{
     // WHAT IT IS
@@ -35,37 +96,19 @@ class Card{
     
 }
 
-var makeDeck = function(howMany){
-    var deck = [];
 
-    for(var i = 0; i < howMany; i++){
-        var card = new Card(i);
-        deck.push(card);
-    }
+var players = [
 
-    return deck;
-}
+];
 
+var marshaPJohnson = new Deck(52);
 
-var shuffledDeck = function(deck){
-    
-    for(var i = 0; i < deck.length; i++){
-        // gotta randomify
-        var rnd = Math.floor(Math.random() * deck.length);
+players[0] = new Player ("Eden");
 
-        // cards need to switch position randomly
-        var card1 = deck[i];
-        var card2 = deck[rnd];
+var newGame = new Game(players, marshaPJohnson);
 
-        deck[rnd] = card1;
-        deck[i] = card2;
+marshaPJohnson.cards[0].draw();
+console.log(marshaPJohnson.cards);
 
-    }
-
-    return deck;
-}
-
-var DECK = makeDeck(52);
-shuffledDeck(DECK);
-console.log(DECK);
-DECK[0].draw();
+var williamOfOrange = new Card(13);
+williamOfOrange.draw();
